@@ -1,0 +1,31 @@
+note over selain:
+käyttäjä kirjoittaa lomakkeen inputtiin "uusi note" ja painaa "save"
+end note
+
+selain->palvelin: HTTP POST "uusi note" https://fullstack-exampleapp.herokuapp.com/new_note
+palvelin-->selain: Redirect 302 samaan ohjelmaan kuin missä oltiin 
+
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/notes
+palvelin-->selain: HTML -koodi
+
+note over selain:
+luetaan html ja löydetään sieltä viittaukset css/js tiedostoihin jotka noudetaan
+end note
+
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+palvelin-->selain: main.css tyylitiedosto ohjelman ulkoasun tyylitystä varten
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.js
+palvelin-->selain: main.js javascript ohjelman toimintaa varten
+
+note over selain:
+main.js javascriptin suoritus ja pyyntö hakea 
+JSON-data data.json palvelimelta
+end note
+
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+palvelin-->selain: pautetaan seuraavaa sisältöä [{ content: "teksti", date: "2020-08-24" }, { content: "uusi note", date: "2020-08-24}]
+
+note over selain:
+selain suorittaa tapahtumankäsittelijän ja tulostaa päivitetyt
+datat selaimelle
+end note

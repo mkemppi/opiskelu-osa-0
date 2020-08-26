@@ -1,0 +1,9 @@
+note over selain:
+käyttäjä kirjoittaa lomakkeen inputtiin "uusi note" ja painaa "save".
+Selain suorittaa tapahtumankäsittelijän, lisää notesin notes listaan
+piirtää ruudun sisällön uudelleen ja lähettää sen sitten palvelimelle.
+end note
+
+selain->palvelin: HTTP POST "uusi note" https://fullstack-exampleapp.herokuapp.com/new_note_spa
+palvelin-->selain: 201 created
+
